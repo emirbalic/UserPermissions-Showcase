@@ -1,0 +1,21 @@
+<!-- <p *ngFor="let user of users">
+  {{user.id}}. {{user.username}}
+</p> -->
+<div class="container">
+  <div class="row col-md-12">
+    <table border="1px solid black" class="table">
+      <tr>
+        <th>
+          User Id
+        </th>
+        <th>
+          User Name
+        </th>
+      </tr>
+      <tr *ngFor="let user of users" style="cursor: pointer" (click)="onManage(user)">
+        <th>{{user.id}}</th>
+        <th>{{user.username}}</th>
+      </tr>
+    </table>
+  </div>
+</div>
