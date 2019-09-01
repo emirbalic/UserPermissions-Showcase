@@ -1,3 +1,18 @@
-<p *ngFor="let permission of permissions">
-  {{permission.id}}. {{permission.nameOfPermission}}
-</p>
+<div class="container">
+    <div class="row col-md-12">
+      <table border="1px solid black" class="table">
+        <tr>
+          <th>
+            Permission Id
+          </th>
+          <th>
+            Permission Details
+          </th>
+        </tr>
+        <tr *ngFor="let permission of permissions">
+          <th>{{permission.id}}</th>
+          <th>{{permission.nameOfPermission}}</th>
+        </tr>
+      </table>
+    </div>
+  </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-permissions',
@@ -8,14 +9,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PermissionsComponent implements OnInit {
   permissions: any;
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private data: DataService
+    ) {}
 
   ngOnInit() {
     this.getPermissions();
   }
 
   getPermissions() {
-    this.http.get('http://localhost:5000/api/permissions').subscribe(
+    this.data.getPermissions().subscribe(
       response => {
         this.permissions = response;
         console.log(this.permissions);

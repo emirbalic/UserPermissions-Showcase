@@ -21,7 +21,7 @@ namespace DemjanApi.API.Data
             modelBuilder.Entity<UserPermission>()
                 .HasOne(up => up.User)
                 .WithMany(u => u.UserPermissions)
-                .HasForeignKey(up => up.UserId);
+                .HasForeignKey(u => u.UserId);
             modelBuilder.Entity<UserPermission>()
                 .HasOne(up => up.Permission)
                 .WithMany(p => p.UserPermissions)

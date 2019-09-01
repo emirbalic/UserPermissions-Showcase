@@ -20,27 +20,42 @@ namespace DemjanApi.API.Controllers
         }
 
         [HttpGet]
-        // public ActionResult<IEnumerable<string>> Get()
+
+        // public async Task<IActionResult> GetUsers()
+        // {
+        //     var users = await _context.Users.ToListAsync();
+        //     return Ok(users);
+        // }
+
+
+        [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.Users
+            .Include(x => x.UserPermissions)
+            .ThenInclude(x => x.Permission).ToListAsync();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPermission(int id)
+        public async Task<IActionResult> GetUser(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
 
             return Ok(user);
-
-
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        // [HttpPost("AddUser")]
+        // public async Task<IActionResult> AddUser (String username)
+        // {
+             
+        // }
+
+
+        // [HttpPut("{id}")]
+        // public void Put(int id, [FromBody] string value)
+        // {
+        // }
 
     }
 }
